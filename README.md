@@ -10,6 +10,7 @@
 
 Proje, standart bir Spring Boot yapısını takip eder:
 
+```
 src/main/java/com/tcdd/ticketcheck/
 ├── config
 │   └── RestClientConfig.java     # Spring RestClient için yapılandırma
@@ -23,7 +24,7 @@ src/main/java/com/tcdd/ticketcheck/
 └── service
 ├── EmailService.java         # E-posta bildirimleri göndermek için Servis
 └── TicketCheckService.java   # API çağrıları ve filtrelemeyi yöneten ana servis
-
+```
 ## ⚙️ Yapılandırma
 
 `src/main/resources` klasöründe bir `application.properties` dosyasını düzenleyerek  uygulamayı yapılandırın. TCDD API ayrıntılarını ve e-posta yapılandırmasını sağlamanız gerekecektir.
@@ -32,10 +33,10 @@ src/main/java/com/tcdd/ticketcheck/
 POST /ticket/check
 Sağlanan arama kriterlerine göre müsait tren biletlerini kontrol eder.
 
-İstek Gövdesi: application/json
+### İstek Gövdesi: application/json
 TicketSearchRequest DTO'sunu kullanır:
 
-JSON
+```json
 {
   "departureTime": "gg-AA-yyyy SS:mm:ss",
   "departureTimeEnd": "gg-AA-yyyy SS:mm:ss",
@@ -45,11 +46,11 @@ JSON
   "arrivalStationId": 0,
   "seatType": "string" 
 }
-
-Yanıt: application/json
+```
+### Yanıt: application/json
 Bir List<FilteredTrainDetails> içeren bir ResponseEntity döndürür.
 
-JSON
+```json
 [
   {
     "trainName": "string",
@@ -62,5 +63,5 @@ JSON
     "availableSeats": 0
   }
 ]
-
+```
 Kriterlere uyan müsait koltuklar bulunursa, liste bu trenlerin detaylarını içerecektir. Ayrıca yapılandırılan alıcı e-posta adresine bir bildirim e-postası gönderilecektir.
